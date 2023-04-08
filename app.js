@@ -5,10 +5,10 @@ const exphbs = require("express-handlebars");
 const { Pool } = require("pg");
 const config = require("./config");
 
-// connect to Your MongoDB Atlas Database
+// connect to MongoDB 
 try{mongoose
   .connect(
-    "mongodb+srv://namanV:naman@cluster0.g65asua.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://vpatel:vishesh@cluster0.scbvbhk.mongodb.net/?retryWrites=true&w=majority"
   )
 }
 catch{
@@ -21,14 +21,14 @@ const pool = new Pool(config.database);
 app.engine(".hbs", exphbs.engine({ extname: ".hbs" }));
 app.set("view engine", ".hbs");
 
-var taskMainSchema = new Schema({
+var taskCheck = new Schema({
   taskDescript: String,
   completed: {
     type: Boolean,
     default: false,
   },
 });
-var tasks = mongoose.model("tasks", taskMainSchema);
+var tasks = mongoose.model("tasks", taskCheck);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
